@@ -71,6 +71,74 @@
             color: var(--text);
         }
 
+
+        /* =====================================================
+           CHATBOX
+           ===================================================== */
+
+        .chatbox {
+            margin-top: 50px;
+            padding-top: 25px;
+
+            border-top: 1px solid var(--text);
+
+            text-align: center;
+        }
+
+        .chatbox p {
+            margin-bottom: 15px;
+        }
+
+        .chat-input {
+            width: 80%;
+            max-width: 500px;
+
+            padding: 10px;
+
+            background-color: #000000;
+            color: var(--text);
+
+            border: 1px solid var(--text);
+
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+
+            outline: none;
+        }
+
+        .chat-input:focus {
+            box-shadow: 0 0 5px var(--text);
+        }
+
+        .chat-button {
+            margin-top: 10px;
+
+            padding: 9px 18px;
+
+            background-color: #000000;
+            color: var(--text);
+
+            border: 2px solid var(--text);
+
+            font-family: "Courier New", monospace;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .chat-button:hover {
+            background-color: var(--text);
+            color: #000000;
+        }
+
+        #chat-response {
+            margin-top: 20px;
+
+            min-height: 24px;
+
+            color: var(--text);
+        }
+
     </style>
 </head>
 
@@ -80,48 +148,138 @@
 
         <h1>Documents</h1>
 
+
         <!-- =================================================
-             ✦✦✦ WRITE YOUR HTML HERE ✦✦✦
-
-             You can put basically whatever you want here.
-
-             Examples:
-
-             <p>text</p>
-
-             <h2>something</h2>
-
-             <img src="image.png">
-
-             <a href="https://example.com">link</a>
-
-             You can also use:
-             <div>
-             <br>
-             <hr>
-             <strong>
-             <i>
-             etc.
-
+             ✦✦✦ DOCUMENTS
              ================================================= -->
 
         <div class="documents">
 
-            <!-- WRITE YOUR HTML HERE -->
+            <p>
+                ill keep track of my stuff in here<br>
+                and with you all also being able to view it<br>
+                doesnt that mean youll help me find her?
+            </p>
 
-            <p>ill keep track of my stuff in here<br>
-            and with you all also being able to view it<br>
-            doesnt that mean youll help me find her?</p>
-            <p>ill try to find some documents ayyayayayaayay</p>
-           <p>this is a bit confusing probably, so ill just make some files so i dotn have to do these in htmls..<br>
-           https://docs.google.com/document/d/105a1nlcn4mx2bWxKSw45BCyLfPA-sdauBtuKqjr6z1c/edit?usp=sharing</p>
+            <p>
+                ill try to find some documents ayyayayayaayay
+            </p>
+
+            <p>
+                this is a bit confusing probably, so ill just make
+                some files so i dotn have to do these in htmls..
+                <br><br>
+
+                <a
+                    href="https://docs.google.com/document/d/105a1nlcn4mx2bWxKSw45BCyLfPA-sdauBtuKqjr6z1c/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    document
+                </a>
+            </p>
+
         </div>
 
+
         <!-- =================================================
-             ✦✦✦ END OF YOUR HTML ✦✦✦
+             ✦✦✦ CHATBOX
              ================================================= -->
 
+        <div class="chatbox">
+
+            <p>do you know who youre looking for?</p>
+
+            <input
+                type="text"
+                id="chat-input"
+                class="chat-input"
+                placeholder="..."
+                autocomplete="off"
+            >
+
+            <br>
+
+            <button
+                class="chat-button"
+                onclick="checkAnswer()"
+            >
+                send
+            </button>
+
+            <div id="chat-response"></div>
+
+        </div>
+
+
     </div>
+
+
+    <script>
+
+        /* =====================================================
+           CHATBOX LOGIC
+           ===================================================== */
+
+        function checkAnswer() {
+
+            const input = document
+                .getElementById("chat-input")
+                .value
+                .trim()
+                .toLowerCase();
+
+            const response = document
+                .getElementById("chat-response");
+
+
+            /* ================================================
+               SECRET ANSWER
+               ================================================ */
+
+            if (input === "tchan") {
+
+                window.location.href =
+                    "https://tsukasachann4.github.io/tchanisdead";
+
+                return;
+            }
+
+
+            /* ================================================
+               EVERYTHING ELSE
+               ================================================ */
+
+            if (input === "") {
+
+                response.textContent =
+                    "you didnt type anything.";
+
+            } else {
+
+                response.textContent =
+                    "i dont think thats who im looking for.";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ALLOW ENTER KEY
+           ===================================================== */
+
+        document
+            .getElementById("chat-input")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+                    checkAnswer();
+                }
+
+            });
+
+    </script>
 
 </body>
 </html>
